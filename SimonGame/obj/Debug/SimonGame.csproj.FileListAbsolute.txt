@@ -1,0 +1,7 @@
+C:\Users\Edgardo Nogales\Desktop\SimonGame\SimonGame\bin\Debug\SimonGame.exe.config
+C:\Users\Edgardo Nogales\Desktop\SimonGame\SimonGame\bin\Debug\SimonGame.exe
+C:\Users\Edgardo Nogales\Desktop\SimonGame\SimonGame\bin\Debug\SimonGame.pdb
+C:\Users\Edgardo Nogales\Desktop\SimonGame\SimonGame\obj\Debug\SimonGame.csprojAssemblyReference.cache
+C:\Users\Edgardo Nogales\Desktop\SimonGame\SimonGame\obj\Debug\SimonGame.csproj.CoreCompileInputs.cache
+C:\Users\Edgardo Nogales\Desktop\SimonGame\SimonGame\obj\Debug\SimonGame.exe
+C:\Users\Edgardo Nogales\Desktop\SimonGame\SimonGame\obj\Debug\SimonGame.pdb
