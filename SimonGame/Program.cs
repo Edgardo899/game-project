@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections;
+using System.Reflection;
 
 namespace SimonGame
 {
@@ -54,7 +55,7 @@ namespace SimonGame
                     JugarConNumeros();
                     break;
                 case 2:
-                    Console.WriteLine("¡JUGAR CON LETRAS!");
+                    JuegaConVocales();
                     break;
 
                 case 3:
@@ -62,7 +63,7 @@ namespace SimonGame
                     break;
 
                 case 4:
-                    Console.WriteLine("¡JUGAR CON PAÍSES!");
+                    JuegoPaíses();
                     break;
 
                 case 5:
@@ -912,6 +913,491 @@ namespace SimonGame
             } //Fin del juego.
 
         }// Fin de la función JugarConNumeros.
+
+        //Comienzo de la función JugarPaises();
+        static void JuegoPaíses()
+        {
+            var random = new Random();
+            int dificultad;
+            List<string> países = new List<string>() { "Argentina", "Brasil", "Uruguay", "Paraguay", "Bolivia", "Peru", "Ecuador", "Colombia",
+                                                       "Venezuela", "Panama" };
+
+            Console.WriteLine("Bienvenido!! ");
+
+            Console.WriteLine("Seleccione un nivel de dificultad del 1 al 4 ");
+            dificultad = Convert.ToInt32(Console.ReadLine());                   // Ingresamos el nivel de dificultad 
+            switch (dificultad)
+            {
+                case 1:
+                    int index = random.Next(países.Count);
+                    Console.WriteLine("-------------------------------------------------------------------------");
+                    Console.WriteLine("--- BIENVENIDO INGRESE EL PRIMER PAÍS VISTO: ---");
+                    Console.WriteLine("--- LUEGO OPRIMA ENTER HASTA QUE APAREZCA EL SEGUNDO PAÍS: ---");
+                    Console.WriteLine("--------------------------------------------------------------------------");
+
+                    Console.WriteLine(países[index]);                  // Nos muestra un país al zar de la lista 
+                    string a = Convert.ToString(Console.ReadLine());   // Ingresamos el país visto
+
+
+                    Console.ReadKey();
+
+                    if (países[index] == a)
+                    {
+                        List<string> Input_países = new List<string>();
+                        Input_países.Add(a);
+                        Console.Clear();
+
+                        index = random.Next(países.Count);             // Si se cumple la condición random nos cargara en la variable index un nuevo país al azar
+                        Console.WriteLine(países[index]);               // Si se cumple la condición, nos mostrara un nuevo país  
+                        Console.WriteLine("------------------------------------");
+                        Console.WriteLine("INGRESE EL 1.° PAÍS Y EL QUE ESTA VIENDO SIN ESPACIOS ENTRE ELLOS: ");
+                        a = Convert.ToString(Console.ReadLine());
+                        Console.Clear();
+
+                        if (Input_países[0] + países[index] == a)     // Si el elemento de la lista Input_países que se encuentra en la pocision [0] mas
+                        {                                            // el elemento [index] es igual al elemento ingreasado por el usuario  
+                            Input_países.Add(a);                    // Se agraga el nuevo elemento ingresado a la lista Input_países   
+                            Console.Clear();
+                            index = random.Next(países.Count);
+                            Console.WriteLine(países[index]);
+                            Console.WriteLine("INGRESE EL 1.° , 2.° PAÍS Y EL QUE ESTA VIENDO SIN ESPACIOS ENTRE ELLOS: ");
+                            a = Convert.ToString(Console.ReadLine());
+
+                            if (Input_países[1] + países[index] == a)
+                            {
+                                Input_países.Add(a);
+                                Console.Clear();
+                                index = random.Next(países.Count);
+                                Console.WriteLine(países[index]);
+                                Console.WriteLine("INGRESE EL 1.°, 2.° , 3.° PAÍS Y EL QUE ESTA VIENDO SIN ESPACIOS ENTRE ELLOS: ");
+                                a = Convert.ToString(Console.ReadLine());
+
+                                if (Input_países[2] + países[index] == a)
+                                {
+                                    Console.WriteLine("------------------------------");
+                                    Console.WriteLine("******** GANASTE !!!! ********");
+                                    Console.WriteLine("------------------------------");
+                                    Console.ReadLine();
+                                }
+                                else
+                                    Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                Console.ReadLine();
+                            }
+                            else
+                                Console.WriteLine("OPCIÓN INCORRECTA!!");
+                            Console.ReadLine();
+                        }
+                        else
+                            Console.WriteLine("OPCIÓN INCORRECTA!!");
+                        Console.ReadLine();
+                    }
+                    else
+                        Console.WriteLine("OPCIÓN INCORRECTA!!");
+                    Console.ReadLine();
+                    break;
+
+                case 2:
+                    Console.WriteLine("Nivel 2");
+                    index = random.Next(países.Count);
+                    Console.WriteLine("----------------------------------------------------------------------------------------------");
+                    Console.WriteLine("--- BIENVENIDO INGRESE EL PRIMER PAÍS VISTO: ---");
+                    Console.WriteLine("--- LUEGO OPRIMA ENTER HASTA QUE APAREZCA EL SEGUNDO PAÍS: ---");
+                    Console.WriteLine(países[index]);
+                    a = Convert.ToString(Console.ReadLine());
+
+                    Console.ReadKey();
+
+                    if (países[index] == a)
+                    {
+                        List<string> Input_países = new List<string>();
+                        Input_países.Add(a);
+                        Console.Clear();
+
+                        index = random.Next(países.Count);
+                        Console.WriteLine(países[index]);
+                        Console.WriteLine("------------------------------------");
+                        Console.WriteLine("INGRESE EL 1.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                        a = Convert.ToString(Console.ReadLine());
+
+                        if (Input_países[0] + países[index] == a)
+                        {
+                            Input_países.Add(a);
+                            Console.Clear();
+                            index = random.Next(países.Count);
+                            Console.WriteLine(países[index]);
+                            Console.WriteLine("INGRESE EL 1.° , 2.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                            a = Convert.ToString(Console.ReadLine());
+
+                            if (Input_países[1] + países[index] == a)
+                            {
+                                Input_países.Add(a);
+                                Console.Clear();
+                                index = random.Next(países.Count);
+                                Console.WriteLine(países[index]);
+                                Console.WriteLine("INGRESE EL 1.°, 2.° , 3.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                a = Convert.ToString(Console.ReadLine());
+
+                                if (Input_países[2] + países[index] == a)
+                                {
+                                    Input_países.Add(a);
+                                    Console.Clear();
+                                    index = random.Next(países.Count);
+                                    Console.WriteLine(países[index]);
+                                    Console.WriteLine("INGRESE EL 1.°, 2.° , 3.°, 4.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                    a = Convert.ToString(Console.ReadLine());
+
+                                    if (Input_países[3] + países[index] == a)
+                                    {
+                                        Input_países.Add(a);
+                                        Console.Clear();
+                                        index = random.Next(países.Count);
+                                        Console.WriteLine(países[index]);
+                                        Console.WriteLine("INGRESE EL 1.|, 2.° , 3.°, 4.°, 5.° PAÍS Y EL QUE ACABA DE VER: ");
+                                        a = Convert.ToString(Console.ReadLine());
+
+                                        if (Input_países[4] + países[index] == a)
+                                        {
+                                            Console.WriteLine("------------------------------");
+                                            Console.WriteLine("********GANASTE !!!! ********");
+                                            Console.WriteLine("------------------------------");
+                                            Console.ReadLine();
+                                        }
+                                        else
+                                            Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                        Console.ReadLine();
+                                    }
+                                    else
+                                        Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                    Console.ReadLine();
+                                }
+                                else
+                                    Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                Console.ReadLine();
+                            }
+                            else
+                                Console.WriteLine("OPCIÓN INCORRECTA!!");
+                            Console.ReadLine();
+                        }
+                        else
+                            Console.WriteLine("OPCIÓN INCORRECTA!!");
+                        Console.ReadLine();
+                    }
+                    break;
+                case 3:
+                    Console.WriteLine("Nivel 3");
+                    index = random.Next(países.Count);
+                    Console.WriteLine("--- BIENVENIDO INGRESE EL PRIMER PAÍS VISTO: ---");
+                    Console.WriteLine("--- LUEGO OPRIMA ENTER HASTA QUE APAREZCA EL SEGUNDO PAÍS: ---");
+                    Console.WriteLine(países[index]);
+                    a = Convert.ToString(Console.ReadLine());
+
+                    Console.ReadKey();
+
+                    if (países[index] == a)
+                    {
+                        List<string> Input_países = new List<string>();
+                        Input_países.Add(a);
+                        Console.Clear();
+
+                        index = random.Next(países.Count);
+                        Console.WriteLine(países[index]);
+                        Console.WriteLine("------------------------------------");
+                        Console.WriteLine("INGRESE EL 1.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                        a = Convert.ToString(Console.ReadLine());
+
+                        if (Input_países[0] + países[index] == a)   // Si el elemento de la lista Input_países que se encuentra en la pocision [0] mas
+                        {                                           // el elemento [index] es igual al elemento ingreasado por el usuario
+                            Input_países.Add(a);                   // Se agraga el nuevo elemento ingresado a la lista Input_países 
+                            Console.Clear();
+                            index = random.Next(países.Count);
+                            Console.WriteLine(países[index]);
+                            Console.WriteLine("INGRESE EL 1.° , 2.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                            a = Convert.ToString(Console.ReadLine());
+
+                            if (Input_países[1] + países[index] == a)
+                            {
+                                Input_países.Add(a);
+                                Console.Clear();
+                                index = random.Next(países.Count);
+                                Console.WriteLine(países[index]);
+                                Console.WriteLine("INGRESE EL 1.°, 2.° , 3.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                a = Convert.ToString(Console.ReadLine());
+
+                                if (Input_países[2] + países[index] == a)
+                                {
+                                    Input_países.Add(a);
+                                    Console.Clear();
+                                    index = random.Next(países.Count);
+                                    Console.WriteLine(países[index]);
+                                    Console.WriteLine("INGRESE EL 1.°, 2.° , 3.°, 4.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                    a = Convert.ToString(Console.ReadLine());
+
+                                    if (Input_países[3] + países[index] == a)
+                                    {
+                                        Input_países.Add(a);
+                                        Console.Clear();
+                                        index = random.Next(países.Count);
+                                        Console.WriteLine(países[index]);
+                                        Console.WriteLine("INGRESE EL 1.°, 2.° , 3.°, 4.°, 5.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                        a = Convert.ToString(Console.ReadLine());
+
+                                        if (Input_países[4] + países[index] == a)
+                                        {
+                                            Input_países.Add(a);
+                                            Console.Clear();
+                                            index = random.Next(países.Count);
+                                            Console.WriteLine(países[index]);
+                                            Console.WriteLine("INGRESE EL 1.°, 2.° , 3.°, 4.°, 5.°, 6.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                            a = Convert.ToString(Console.ReadLine());
+
+                                            if (Input_países[5] + países[index] == a)
+                                            {
+                                                Input_países.Add(a);
+                                                Console.Clear();
+                                                index = random.Next(países.Count);
+                                                Console.WriteLine(países[index]);
+                                                Console.WriteLine("INGRESE EL 1.°, 2.° , 3.°, 4.°, 5.°, 6.°, 7.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                                a = Convert.ToString(Console.ReadLine());
+
+                                                if (Input_países[6] + países[index] == a)
+                                                {
+                                                    Console.WriteLine("GANASTE !!!!");
+                                                    Console.ReadLine();
+                                                }
+                                                else Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                                Console.ReadLine();
+                                            }
+                                            else Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                            Console.ReadLine();
+                                        }
+                                        else Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                        Console.ReadLine();
+                                    }
+                                    else Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                    Console.ReadLine();
+                                }
+                                else
+                                    Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                Console.ReadLine();
+                            }
+                            else
+                                Console.WriteLine("OPCIÓN INCORRECTA!!");
+                            Console.ReadLine();
+                        }
+                        else
+                            Console.WriteLine("OPCIÓN INCORRECTA!!");
+                        Console.ReadLine();
+                    }
+                    break;
+                case 4:
+                    Console.WriteLine("Nivel 4");
+                    index = random.Next(países.Count);
+                    Console.WriteLine("--- BIENVENIDO INGRESE EL PRIMER PAÍS VISTO: ---");
+                    Console.WriteLine("--- LUEGO OPRIMA ENTER HASTA QUE APAREZCA EL SEGUNDO PAÍS: ---");
+                    Console.WriteLine(países[index]);
+                    a = Convert.ToString(Console.ReadLine());
+
+                    Console.ReadKey();
+
+                    if (países[index] == a)
+                    {
+                        List<string> Input_países = new List<string>();
+                        Input_países.Add(a);
+                        Console.Clear();
+
+                        index = random.Next(países.Count);
+                        Console.WriteLine(países[index]);
+                        Console.WriteLine("------------------------------------");
+                        Console.WriteLine("INGRESE EL 1.° PAÍS Y EL QUE ACABA DE VER: ");
+                        a = Convert.ToString(Console.ReadLine());
+
+                        if (Input_países[0] + países[index] == a)
+                        {
+                            Input_países.Add(a);
+                            Console.Clear();
+                            index = random.Next(países.Count);
+                            Console.WriteLine(países[index]);
+                            Console.WriteLine("INGRESE EL 1.° , 2.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                            a = Convert.ToString(Console.ReadLine());
+
+                            if (Input_países[1] + países[index] == a)
+                            {
+                                Input_países.Add(a);
+                                Console.Clear();
+                                index = random.Next(países.Count);
+                                Console.WriteLine(países[index]);
+                                Console.WriteLine("INGRESE EL 1.°, 2.° , 3.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                a = Convert.ToString(Console.ReadLine());
+
+                                if (Input_países[2] + países[index] == a)
+                                {
+                                    Input_países.Add(a);
+                                    Console.Clear();
+                                    index = random.Next(países.Count);
+                                    Console.WriteLine(países[index]);
+                                    Console.WriteLine("INGRESE EL 1.°, 2.° , 3.°, 4.° PAÍS Y EL QUE ACABA DE VER SIN ESPCAIOS: ");
+                                    a = Convert.ToString(Console.ReadLine());
+
+                                    if (Input_países[3] + países[index] == a)
+                                    {
+                                        Input_países.Add(a);
+                                        Console.Clear();
+                                        index = random.Next(países.Count);
+                                        Console.WriteLine(países[index]);
+                                        Console.WriteLine("INGRESE EL 1.°, 2.°, 3.°, 4.°, 5.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                        a = Convert.ToString(Console.ReadLine());
+
+                                        if (Input_países[4] + países[index] == a)
+                                        {
+                                            Input_países.Add(a);
+                                            Console.Clear();
+                                            index = random.Next(países.Count);
+                                            Console.WriteLine(países[index]);
+                                            Console.WriteLine("INGRESE EL 1.°, 2.°, 3.°, 4.°, 5.°, 6.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                            a = Convert.ToString(Console.ReadLine());
+                                        }
+                                        if (Input_países[5] + países[index] == a)
+                                        {
+                                            Input_países.Add(a);
+                                            Console.Clear();
+                                            index = random.Next(países.Count);
+                                            Console.WriteLine(países[index]);
+                                            Console.WriteLine("INGRESE EL 1.°, 2.°, 3.°, 4.°, 5.°, 6.°, 7.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                            a = Convert.ToString(Console.ReadLine());
+
+                                            if (Input_países[6] + países[index] == a)
+                                            {
+                                                Input_países.Add(a);
+                                                Console.Clear();
+                                                index = random.Next(países.Count);
+                                                Console.WriteLine(países[index]);
+                                                Console.WriteLine("INGRESE EL 1.°, 2.°, 3.°, 4.°, 5.°, 6.°, 7.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                                a = Convert.ToString(Console.ReadLine());
+
+                                                if (Input_países[7] + países[index] == a)
+                                                {
+                                                    Input_países.Add(a);
+                                                    Console.Clear();
+                                                    index = random.Next(países.Count);
+                                                    Console.WriteLine(países[index]);
+                                                    Console.WriteLine("INGRESE EL 1.°, 2.°, 3.°, 4.°, 5.°, 6.°, 7.°, 8.° PAÍS Y EL QUE ACABA DE VER SIN ESPACIOS: ");
+                                                    a = Convert.ToString(Console.ReadLine());
+
+                                                    if (Input_países[8] + países[index] == a)
+                                                    {
+                                                        Console.WriteLine("GANASTE !!!!");
+                                                        Console.ReadLine();
+                                                    }
+                                                    else Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                                    Console.ReadLine();
+                                                }
+                                                else Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                                Console.ReadLine();
+                                            }
+                                            else Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                            Console.ReadLine();
+                                        }
+                                        else Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                        Console.ReadLine();
+                                    }
+                                    else Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                    Console.ReadLine();
+                                }
+                                else Console.WriteLine("OPCIÓN INCORRECTA!!");
+                                Console.ReadLine();
+
+                            }
+                            else Console.WriteLine("OPCIÓN INCORRECTA!!");
+                            Console.ReadLine();
+                        }
+                        else Console.WriteLine("OPCIÓN INCORRECTA!!");
+
+                        Console.ReadLine();
+                    }
+                    break;
+            }
+
+        }  //Fin de la función JugarPaises();
+
+        //Comienzo de la función JuegaConVocales();
+        // -------- Metod Contiene la logica del juego y sus variables.
+
+        static void JuegaConVocales(int dificultad = 0)
+        {
+            // -----  Aqui estan definidas nuestras listas, enteros, arrays, boleanos y contadores
+
+            List<String> elementos = new List<string>() { "a", "e", "i", "o", "u" }; // Lista de elementos a jugar disponibles
+            List<String> palabraMaquina = new List<String>();
+            List<String> palabraMaquinaTemporal = new List<String>();
+            List<String> palabraUsuario = new List<String>();
+            Random aleatory = new Random();
+            Boolean acierto = true;
+            float score = 0;
+            int indice = -1;
+
+            // Iniciamos el juego y damos bienvenida... eli dificult
+
+            Console.WriteLine("Juguemos con Simon");
+            Console.WriteLine("Elige la cantidad de vocales con las que quieres jugar");
+            Console.Write("0 = Mdo Dios, 1 = Mdo Leyenda, 2 = Mdo Normal, 3 = Mdo Babys ");
+            int dificil = int.Parse(Console.ReadLine());
+            Console.WriteLine("Recuerda, separa tus vocales con la barra espaciadora");
+            Console.WriteLine("Muy bien, Vamos a jugar.");
+            while (acierto != false)
+            {
+
+
+                Console.WriteLine("Excelente! ");
+                Console.Clear();
+                score += 150; // aumento de puntaje por cada acierto, 150 puntos por ronda
+                indice += 1;
+
+                int azar = aleatory.Next(dificil, elementos.Count); // Aqui elige la dificultad
+                palabraMaquina.Add(elementos[azar]); palabraMaquinaTemporal.Add(elementos[azar]);
+
+                PrintList(palabraMaquinaTemporal);
+                Console.Write($"Ahora tus vocales: ");
+                palabraMaquinaTemporal.Clear(); palabraUsuario.Clear();
+
+                String entradas = Console.ReadLine();
+                String[] entradaToLista = entradas.Split(" ");
+                foreach (String entrada in entradaToLista) // agregamos las entradas de usuario como lista
+                {
+                    palabraUsuario.Add(entrada);
+                }
+
+
+                foreach (String Elemento in palabraMaquina)
+                {
+
+                    if (palabraMaquina[indice] == palabraUsuario[indice])
+                    {
+                        acierto = true; // Si son iguaales los index de cada lista mantiene el While
+
+                    }
+                    else
+                    {
+                        acierto = false; // Sale del While
+                        Console.WriteLine($"Perdiste.. tu puntaje final es = {score} puntos");
+                        Console.WriteLine("Gracias por jugar. ");
+                        break;
+                    }
+                }
+
+            }
+
+        }
+
+
+
+        // ---------------- Esta funcion muestra en pantalla los elementos de la lista. -------
+        public static void PrintList(List<string> lista)
+        {
+            foreach (string element in lista)
+                Console.WriteLine("Simon dice : {0}", element);
+
+        }
+        //Fin de la función JuegaconVocales();
 
     } //Fin de la clase Program.
 }
