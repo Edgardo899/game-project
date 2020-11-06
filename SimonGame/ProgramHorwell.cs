@@ -9,66 +9,155 @@ namespace simonGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Bienvenido a SimonGame");
-            Console.WriteLine("Nuestros elementos serán vocales.");
 
-            //  ----------Definimos variables. --------------------------------------------------
-            int index;
-            int score = 0;
-
-            List<string> listElements = new List<string>() { "a", "e", "i", "o", "u"}; // Lista Maquina
-            List<string> listUser = new List<string>(); // Lista para los input del usuario. SOlo en caso de no lograrlo con COlas
-
+            List<String> elementos = new List<string>() { "a", "e", "i", "o", "u" };
+            List<String> palabraMaquina = new List<String>();
+            List<String> palabraMaquinaTemporal = new List<String>();
             Random aleatory = new Random();
+            int azar = aleatory.Next(0, elementos.Count); // El cero toma el minimo de elementos, usarlos para dificultad 
+            palabraMaquina.Add(elementos[azar]);
+            PrintList(palabraMaquina);
 
-            Queue colaMachine = new Queue();
-            Queue colaUser = new Queue();
+            List<String> palabraUsuario = new List<String>();
+
+            //String entradas = Console.ReadLine();
+            //String[] entradaToLista = entradas.Split(" ");
+            //foreach (String entrada in entradaToLista)
+            //    palabraUsuario.Add(entrada);
+
+            //List<String> listaFinal = new List<string>();          
+            //String frases = Console.ReadLine();
+            //String [] fraseSeparada = frases.Split(" ");
+            //foreach ( String cosa in fraseSeparada)
+            //    listaFinal.Add(cosa);
+            //PrintList(listaFinal);
+
+            Console.Write("Tu turno: ");
+            String Usuario = Console.ReadLine();
+            palabraUsuario.Add(Usuario);
+
+            //------------------------------
+
+            Boolean acierto = true;
+            int score = 0;
+            int indice = 0;
+
+            while (acierto != false)
+            {
+
+                foreach (String Elemento in palabraMaquina)
+                {
+                    if (palabraMaquina[indice] == palabraUsuario[indice])
+                    {
+                        acierto = true;
+                        Console.WriteLine(acierto);
+
+                    }
+                    else
+                    {
+                        acierto = false;
+                        Console.WriteLine(acierto);
+                        Console.WriteLine(indice);
+                        indice += 1;
+                        Console.WriteLine($"Veamos.. tu puntaje final = {score}");
+                        Console.WriteLine("Gracias por jugar. ");
+                        Console.ReadKey();
+                        break;
+                    }
+                }
+
+
+
+                Console.WriteLine("Excelente, vamos una mas! ");
+                Console.WriteLine(indice);
+                indice += 1;
+                score += 150;
+                int azar2 = aleatory.Next(0, elementos.Count);
+                palabraMaquina.Add(elementos[azar2]); palabraMaquinaTemporal.Add(elementos[azar2]);
+
+                PrintList(palabraMaquinaTemporal);
+                Console.Write("Ahora tu secuencia:  ");
+                palabraMaquinaTemporal.Clear(); palabraUsuario.Clear();
+
+                String entradas = Console.ReadLine();
+                String[] entradaToLista = entradas.Split(" ");
+                foreach (String entrada in entradaToLista)
+                    palabraUsuario.Add(entrada);
+
+
+            }
 
 
 
 
 
-            //---------------------Desarrollo del juego ---------------------------------------------------------
-
-            do {
-                score += 10; // Suma por cada ciclo 
-                
-                index = aleatory.Next(0, listElements.Count); // El cero toma el minimo de elementos, usarlos para dificultad 
-                Console.WriteLine("Lo que random elije: {0}", index); // Solo para controlar si funcionaba el random 
-                Console.WriteLine("Ronda {1}: {0}", listElements[index], score);
-
-
-                colaMachine.Enqueue(listElements[index]); // Ingresa a la cola de la Maquina 
-
-                Console.WriteLine("Elementos en la cola : {0}", colaMachine.Count);
-
-                Console.Write("Ahora repite la secuencia... ");
-                string entradaUser = Console.ReadLine();
-                colaUser.Enqueue(entradaUser); // Ingresa a la cola de usuario
-
-
-                
-                
-
-            } while (colaMachine == colaUser);
-            
-            Console.WriteLine("Eljuego ha terminado, tu puntaje es {0}", score); // Final del juego al fallar.
-            PrintQueue(colaMachine); // COntrolamos que hubiera agregado elementos a la cola correctamente 
-            PrintQueue(colaUser);
 
 
 
 
         }
-
-        // ---------------- Esta funcion muestra en pantalla los elementos de la cola. -------
-        public static void PrintQueue(Queue cola)
+        // ---------------- Esta funcion muestra en pantalla los elementos de la lista. -------
+        public static void PrintList(List<string> lista)
         {
-            foreach (string element in cola)
-                Console.Write("- Elemento random : {0}", element);
-            Console.WriteLine();
+            foreach (string element in lista)
+                Console.WriteLine("-Elemento Random: {0}", element);
+
         }
+
+        //////--------- Crear la lista random---
+        //static string[] ElementoRandom(int complejidad = 0)
+        //{
+        //    Random aleatory = new Random();
+        //    String[] listElements = "a e i o u "; // Lista Maquina
+        //    int index = aleatory.Next(complejidad, listElements.Length); // El cero toma el minimo de elementos, usarlos para dificultad 
+        //    String nuevo =
+        //}
+
+        //// ---------------- Esta funcion muestra en pantalla los elementos de la lista. -------
+        //public static void PrintList(List<string> lista)
+        //{
+        //    foreach (string element in lista)
+        //        Console.WriteLine(" memoriza: {0}", element);
+
+        //}
+
+        //// ---------------- Esta funcion muestra en pantalla los elementos de la cola. -------
+        //public static void PrintCola(Queue cola)
+        //{
+        //    foreach (string number in cola)
+        //    {
+        //        Console.Write("- {0}", number);
+        //    }
+
+        //}
+
+
+
+        //// --------- Comparar --------------
+        //public static Boolean Comprobar(Object cola1, Object cola2)
+        //{
+        //    if (cola1.Equals(cola2))
+        //        return true;
+        //    else return false;
+        //}
+
+
+
+
+        ////--------- Crear la lista random---
+        //static string ElementoRandom(int complejidad = 0)
+        //{
+        //    Random aleatory = new Random();
+        //    List<string> listElements = new List<string>() { "a ", "e ", "i ", "o ", "u " }; // Lista Maquina
+        //    int index = aleatory.Next(complejidad, listElements.Count); // El cero toma el minimo de elementos, usarlos para dificultad 
+        //    return listElements[index];
+        //}
+
+
+
+
 
     }
+
 }
 
